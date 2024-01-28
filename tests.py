@@ -52,6 +52,15 @@ class TestBooksCollector:
 
         assert len(collector.get_books_genre()) == 0
 
+    @pytest.mark.xfail
+    def test_add_new_book_dont_add_book_with_space_in_name(
+            self,
+    ):
+        collector = BooksCollector()
+        collector.add_new_book(' ')
+
+        assert len(collector.get_books_genre()) == 0
+
     def test_add_new_book_dont_add_book_with_too_long_name(
             self,
     ):
